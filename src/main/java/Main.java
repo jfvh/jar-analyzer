@@ -1,3 +1,7 @@
+import model.Dependency;
+
+import java.text.ParseException;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -6,7 +10,13 @@ public class Main {
     }
 
     public void doStuff(){
-        JarAnalyzer jarAnalyzer =  new JarAnalyzer();
-        jarAnalyzer.AnalyseJar("/Users/jvanheijst/.m2/repository/commons-io/commons-io/2.5/commons-io-2.5.jar");
+        JarParser jarParser =  new JarParser();
+        try {
+            Dependency dependency = jarParser.parseJar("/Users/jvanheijst/.m2/repository/commons-io/commons-io/2.5/commons-io-2.5.jar");
+            System.out.println(dependency);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 }

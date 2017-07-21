@@ -15,4 +15,6 @@ public interface Dependency {
 
     List<Package> packages();
 
+    List<String> classPaths();
+
 }
