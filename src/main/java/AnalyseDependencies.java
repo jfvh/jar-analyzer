@@ -1,3 +1,6 @@
+import checks.Check;
+import checks.PackageCheck;
+import checks.VersionCheck;
 import model.Dependency;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.AbstractMojo;
@@ -36,18 +39,28 @@ public class AnalyseDependencies extends AbstractMojo{
                 e.printStackTrace();
             }
         }
-
-        //print stuff
-        for (Dependency dependency : dependencies) {
-
-                System.out.println("-------------------------------");
-                System.out.println(dependency.groupId());
-                System.out.println(dependency.artifactId());
-                System.out.println(dependency.version());
-
-        }
-
-
+        doChecks(dependencies);
 
     }
+
+    private void doChecks(List<Dependency> dependencies){
+        PackageCheck packageCheck = new PackageCheck(dependencies);
+        printCheck(packageCheck);
+        VersionCheck versionCheck = new VersionCheck(dependencies);
+        printCheck(versionCheck);
+    }
+
+
+
+    private void printCheck(Check check){
+        printWithHead(check.checkMessage());
+        for (String message : check.checkOutput()) {
+            printWithHead(message);
+        }
+    }
+
+    private void printWithHead(String string){
+        System.out.println("[JAR Analyser] "+string);
+    }
+
 }
