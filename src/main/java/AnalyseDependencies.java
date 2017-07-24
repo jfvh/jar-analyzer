@@ -63,7 +63,7 @@ public class AnalyseDependencies extends AbstractMojo{
     }
 
     private void printWithHead(String string){
-        System.out.println("[JAR Analyser] "+string);
+        System.out.println("[Jar Analyzer] "+string);
     }
 
 }

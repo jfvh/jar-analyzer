@@ -19,7 +19,6 @@ public class JarParser {
     public Dependency parseJar(String filepath) throws ParseException {
         List<String> classes = getClasses(filepath);
         List<Package> packages = parseClassesList(classes);
-//        /Users/jvanheijst/.m2/repository/com/bol/axle/axle-spring-boot-starter-service/0.7.0/axle-spring-boot-starter-service-0.7.0.jar
         String[] jarDefinition = parseJarPath(filepath);
         ImmutableDependency dependency = ImmutableDependency.builder()
                 .groupId(jarDefinition[0])
