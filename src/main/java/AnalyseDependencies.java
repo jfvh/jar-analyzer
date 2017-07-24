@@ -1,4 +1,5 @@
 import checks.Check;
+import checks.DoubleDependencyCheck;
 import checks.PackageCheck;
 import checks.VersionCheck;
 import model.Dependency;
@@ -44,6 +45,8 @@ public class AnalyseDependencies extends AbstractMojo{
     }
 
     private void doChecks(List<Dependency> dependencies){
+//        DoubleDependencyCheck doubleDependencyCheck = new DoubleDependencyCheck(dependencies); //not really useful
+//        printCheck(doubleDependencyCheck);
         PackageCheck packageCheck = new PackageCheck(dependencies);
         printCheck(packageCheck);
         VersionCheck versionCheck = new VersionCheck(dependencies);

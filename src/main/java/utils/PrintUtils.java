@@ -10,7 +10,7 @@ public class PrintUtils {
         return stringBuilder.append("Dependency:{").append("")
                 .append(valueOrEmptyIfNull(dependency.groupId())).append(" - ")
                 .append(valueOrEmptyIfNull(dependency.artifactId())).append(" - ")
-                .append(valueOrEmptyIfNull(dependency.version())).toString();
+                .append(valueOrEmptyIfNull(dependency.version())).append("}").toString();
     }
 
     public static String valueOrEmptyIfNull(String input) {
